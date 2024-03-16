@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "age": 35,
+      "gender": "male",
+      "mugshot": "<img src='1.jpg' alt='Mugshot 1'> <p>Name: John Doe</p> <p>ID: 1</p> <p>Age: 35</p>"
+    },
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "age": 28,
+      "gender": "female",
+      "mugshot": "<img src='2.jpg' alt='Mugshot 2'> <p>Name: Jane Smith</p> <p>ID: 2</p> <p>Age: 28</p>"
+    },
+    // Add more criminal data here
+  ]

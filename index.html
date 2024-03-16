@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criminal Recognition System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Criminal Recognition System</h1>
+    </header>
+    <main>
+        <section id="search">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search by name or ID">
+                <button type="submit">Search</button>
+            </form>
+            <div id="filters">
+                <label for="age-filter">Age:</label>
+                <input type="range" id="age-filter" min="18" max="80" value="18">
+                <label for="gender-filter">Gender:</label>
+                <select id="gender-filter">
+                    <option value="">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </section>
+        <section id="results">
+            <!-- Mugshot result thumbnails go here -->
+        </section>
+        <section id="details">
+            <!-- Selected mugshot details go here -->
+        </section>
+    </main>
+    <footer>
+        <!-- Footer content, such as copyright and contact info -->
+    </footer>
+    <script>
+        // JavaScript code for dynamic search and filtering, interactive results, etc.
+    </script>
+</body>
+</html>
