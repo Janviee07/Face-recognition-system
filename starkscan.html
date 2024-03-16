@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starkscan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Hide overflow to prevent scroll bars */
+            color: white; /* Set text color to white */
+            background-color: #000; /* Set background color */
+        }
+
+        video {
+            position: fixed; /* Fixed position so it covers the whole screen */
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Set z-index to be behind other content */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 50px;
+            position: relative; /* Position relative for curved border */
+            z-index: 1; /* Ensure content is above the video */
+        }
+
+        .container h1 {
+            font-size: 5em; /* Adjust font size as needed */
+            font-family: 'Times New Roman', Times, serif; /* Change font family */
+            position: relative; /* Position relative for curved border */
+            z-index: 1; /* Ensure text is above the border */
+        }
+
+        /* Faded filled rectangle style */
+        .border-behind {
+            position: absolute;
+            top: -20px; /* Adjust position to cover text adequately */
+            left: -20px; /* Adjust position to cover text adequately */
+            right: -20px; /* Adjust position to cover text adequately */
+            bottom: -20px; /* Adjust position to cover text adequately */
+            z-index: 0; /* Ensure behind the text */
+            background-color: rgba(0, 0, 0, 0.5); /* Faded black background */
+            border-radius: 30px; /* Curved edges */
+            pointer-events: none; /* Make sure the border doesn't interfere with click events */
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            margin-top: 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+        
+        button {
+            color: white;
+            background-color: #1c009b; 
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #14b3cf; 
+        }
+
+        /* Style for the file input and similar text */
+        input[type="file"],
+        button {
+            font-size: 1.2em; /* Increase font size */
+            color: white; /* Set text color to white */
+            margin-top: 10px; /* Adjust margin */
+        }
+
+        input[type="file"] {
+            padding: 10px 20px;
+            background-color: #1c009b; 
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        input[type="file"]:hover {
+            background-color: #14b3cf; 
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted>
+        <source src="live3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="container">
+        <div class="border-behind"></div>
+        <h1>Starkscan</h1>
+        <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png">
+        <button onclick="processImage()">Detect Faces</button>
+        <div id="result"></div>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <img id="uploadedImage" src="" alt="Uploaded Image">
+    </div>
+
+    <script>
+        // Function to process uploaded image
+        function processImage() {
+            var fileInput = document.getElementById('imageUpload');
+            var file = fileInput.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = new Image();
+                    img.onload = function() {
+                        var canvas = document.getElementById('canvas');
+                        var ctx = canvas.getContext('2d');
+                        var MAX_WIDTH = 600;
+
+                        var ratio = MAX_WIDTH / img.width;
+                        canvas.width = MAX_WIDTH;
+                        canvas.height = img.height * ratio;
+                        ctx.drawImage(img, 0, 0, MAX_WIDTH, img.height * ratio);
+                        var dataUrl = canvas.toDataURL('image/jpeg');
+
+                        detectFaces(dataUrl);
+                    }
+                    img.src = e.target.result;
+                    document.getElementById('uploadedImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Function to detect faces
+        function detectFaces(image) {
+            document.getElementById('result').innerText = "Faces detected successfully!";
+            // Add your facial recognition code here
+        }
+    </script>
+</body>
+</html>
+
