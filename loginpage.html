@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Recognition System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('marvel_background.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeInAnimation 2s ease;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .options button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .options button:hover {
+            background-color: #16a085;
+        }
+
+        .content {
+            margin-top: 30px;
+        }
+
+        .user-info {
+            display: none;
+        }
+
+        .user-identification {
+            display: none;
+        }
+
+        .user-info.visible,
+        .user-identification.visible {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Facial Recognition System</h1>
+        <div class="options">
+            <button onclick="showUserInfo()">User Info</button>
+            <button onclick="showUserIdentification()">User Identification</button>
+        </div>
+        <div class="content">
+            <div class="user-info" id="userInfo">
+                <h2>User Information</h2>
+                <form id="userInfoForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Save Info</button>
+                    </div>
+                </form>
+            </div>
+            <div class="user-identification" id="userIdentification">
+                <h2>User Identification</h2>
+                <p>Use the facial recognition feature to identify yourself.</p>
+                <!-- Placeholder for facial recognition component -->
+                <div id="facialRecognitionPlaceholder">
+                    <img src="placeholder_image.jpg" alt="Facial Recognition Placeholder" width="200">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showUserInfo() {
+            document.getElementById("userInfo").classList.add("visible");
+            document.getElementById("userIdentification").classList.remove("visible");
+        }
+
+        function showUserIdentification() {
+            document.getElementById("userInfo").classList.remove("visible");
+            document.getElementById("userIdentification").classList.add("visible");
+        }
+
+        // JavaScript for form submission (just a placeholder, you would need backend processing for this)
+        document.getElementById("userInfoForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            // Placeholder for form submission processing
+            alert("User information saved!");
+        });
+    </script>
+</body>
+</html>
